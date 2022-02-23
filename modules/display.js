@@ -23,6 +23,7 @@ class ShoppingBag{
     }
     totalCost(){
         console.log(`summa: ${this.totalPrice}`)
+        return this.totalPrice
     }
     buy(){
         this.totalAmount=0 

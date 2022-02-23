@@ -63,13 +63,17 @@ import {ShoppingBag} from './modules/display.js';
         )
     }
 
-
-    document.querySelector('.shoppingbag').addEventListener('click', function(event){
+    const shopping = document.querySelector('.shoppingbag')
+    shopping.addEventListener('click', function(){
         console.log(bagOne.totalCost());
-        for(let i=0; i<2; i++){
+        for(let i=0; i<bagOne.totalAmount; i++){
             const products = document.createElement('p');
+            shopping.appendChild(products)
             products.innerText='Bag';
         }
+        const summa = document.createElement('p');
+        shopping.appendChild(summa)
+        summa.innerText=`Summa: ${bagOne.totalCost()}`;
     })
     
 })();
