@@ -1,0 +1,1 @@
+Vi startade ett projekt i Github och la till issues för att stycka elefanten och fundera ut hur vi ska gå tillväga för att få funktion på sidan.
