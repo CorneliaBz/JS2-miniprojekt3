@@ -7,7 +7,7 @@ import {ShoppingBag} from './modules/display.js';
     bagOne.addProduct(5, 100);
     bagOne.deleteProduct(1, 250);
     bagOne.totalCost();
-    // bagOne.buy();
+    
 
     getProducts();
 
@@ -74,6 +74,15 @@ import {ShoppingBag} from './modules/display.js';
         const summa = document.createElement('p');
         shopping.appendChild(summa)
         summa.innerText=`Summa: ${bagOne.totalCost()}`;
+        const buyNow = document.createElement('button');
+        shopping.appendChild(buyNow);
+        buyNow.innerText=`Buy`;
+
+        buyNow.addEventListener('click', ()=>{
+            bagOne.buy();
+            summa.innerText=`Tack för ditt köp`;
+            buyNow.style.display='none';
+        })
     })
     
 })();
