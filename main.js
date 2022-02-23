@@ -22,7 +22,7 @@
 
                     const section = document.querySelectorAll(`section`)[0];
                     const btn1 = document.createElement(`button`);
-                    const btn2 = document.createElement(`button`);
+                    const input = document.createElement(`input`);
 
                     const newDiv = document.createElement(`div`);
                     const h1 = document.createElement(`h1`);
@@ -34,16 +34,21 @@
                     h2.innerText = promiseValue[i].price + `:-`;
                     img.src = `img/` + promiseValue[i].image;
                     p2.innerText = `In stock: ` + promiseValue[i].stock;
+                    
                     btn1.innerText = `Add to cart`;
-                    btn2.innerText = `Remove from cart`;
+                    
+                    input.type = `number`;
+                    input.name = `amount`;
+                    input.min = 1;
+                    input.max = 15;
 
                     section.appendChild(newDiv);
                     newDiv.appendChild(h1);
                     newDiv.appendChild(h2);
                     newDiv.appendChild(img);
                     newDiv.appendChild(p2);
+                    newDiv.appendChild(input);
                     newDiv.appendChild(btn1);
-                    newDiv.appendChild(btn2);
                 }
             }
         )
