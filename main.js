@@ -1,10 +1,10 @@
-import {ShoppingBag} from './modules/display.js';
+import { ShoppingBag } from './modules/display.js';
 
 const bagOne = new ShoppingBag(0)
 bagOne.addProduct(5, 100);
 bagOne.deleteProduct(1, 250);
 bagOne.totalCost();
-bagOne.buy()
+bagOne.buy();
 
 (function () {
 
@@ -29,6 +29,7 @@ bagOne.buy()
                 for (let i = 1; i < promiseValue.length; i++) {
 
                     const section = document.querySelectorAll(`section`)[0];
+                    const form = document.createElement(`form`);
                     const btn1 = document.createElement(`button`);
                     const input = document.createElement(`input`);
 
@@ -42,9 +43,11 @@ bagOne.buy()
                     h2.innerText = promiseValue[i].price + `:-`;
                     img.src = `img/` + promiseValue[i].image;
                     p2.innerText = `In stock: ` + promiseValue[i].stock;
-                    
+
                     btn1.innerText = `Add to cart`;
-                    
+                    btn1.id = `button` + i;
+                    btn1.type = `submit`;
+
                     input.type = `number`;
                     input.name = `amount`;
                     input.min = 1;
@@ -55,11 +58,28 @@ bagOne.buy()
                     newDiv.appendChild(h2);
                     newDiv.appendChild(img);
                     newDiv.appendChild(p2);
-                    newDiv.appendChild(input);
-                    newDiv.appendChild(btn1);
+                    newDiv.appendChild(form);
+                    form.appendChild(input);
+                    form.appendChild(btn1);
                 }
             }
         )
     }
-    
+
+    //Måste för tillfället ha en timer för att knapparna ska laddas in innan de kan hämntas från DOM:en funkar endast på första knappen just nu. Resterande knappar hämtar amount från samma input :'( WILL FIX LATER
+    setTimeout(function (){ 
+        document.getElementById(`button1`).addEventListener("click", getAmount);
+        document.getElementById(`button2`).addEventListener("click", getAmount);
+        document.getElementById(`button3`).addEventListener("click", getAmount);
+        document.getElementById(`button4`).addEventListener("click", getAmount);
+        document.getElementById(`button5`).addEventListener("click", getAmount);
+
+        function getAmount(event) {
+            const input = document.querySelector(`input`); 
+            event.preventDefault();
+            console.log(input.value);
+        }
+
+    },100);
+
 })();
