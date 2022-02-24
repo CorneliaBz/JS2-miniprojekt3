@@ -151,7 +151,7 @@ import { ShoppingBag, Product} from './modules/display.js';
             }
         }
 
-    },2000);
+    },1000);
 
     const shopping = document.querySelector('.shoppingbag')
     shopping.addEventListener('click', ()=>{
