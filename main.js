@@ -1,11 +1,7 @@
-import { ShoppingBag } from './modules/display.js';
+import { ShoppingBag, Product} from './modules/display.js';
 
 (function () {
-    const bagOne = new ShoppingBag(0)
-    // bagOne.addProduct();
-    // bagOne.deleteProduct();
-    bagOne.totalCost();
-    
+    const bagOne = new ShoppingBag(0);
 
     getProducts();
 
@@ -38,6 +34,7 @@ import { ShoppingBag } from './modules/display.js';
                     const h2 = document.createElement('h2');
                     const p2 = document.createElement('p');
 
+                    console.log(promiseValue[i])
                     h2.classList.add("price");
 
                     h1.innerText = promiseValue[i].name;
@@ -63,7 +60,7 @@ import { ShoppingBag } from './modules/display.js';
                     form.appendChild(input);
                     form.appendChild(btn1);
                 }
-            }
+            } 
         )
     }
 
@@ -81,10 +78,15 @@ import { ShoppingBag } from './modules/display.js';
             const price1 = document.getElementsByClassName('price')[0];
             
             const amount = parseInt(input1.value);
-            const price = (parseInt(price1.innerText));
-
-            bagOne.addProduct(amount, price);
+            const price = parseInt(price1.innerText);
+            const productName = document.querySelectorAll('h1')[0].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
         }
+
         function getAmount2(event) {
             event.preventDefault();
             const input2 = document.querySelectorAll('input')[1];
@@ -93,8 +95,14 @@ import { ShoppingBag } from './modules/display.js';
             const amount = parseInt(input2.value);
             const price = parseInt(price2.innerText);
 
-            bagOne.addProduct(amount, price);
+            const productName = document.querySelectorAll('h1')[1].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
         }
+
         function getAmount3(event) {
             event.preventDefault();
             const input3 = document.querySelectorAll('input')[2];
@@ -103,8 +111,14 @@ import { ShoppingBag } from './modules/display.js';
             const amount = parseInt(input3.value);
             const price = parseInt(price3.innerText);
 
-            bagOne.addProduct(amount, price);
+            const productName = document.querySelectorAll('h1')[2].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
         }
+
         function getAmount4(event) {
             event.preventDefault();
             const input4 = document.querySelectorAll('input')[3];
@@ -113,8 +127,14 @@ import { ShoppingBag } from './modules/display.js';
             const amount = parseInt(input4.value);
             const price = parseInt(price4.innerText);
 
-            bagOne.addProduct(amount, price);
+            const productName = document.querySelectorAll('h1')[3].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
         }
+
         function getAmount5(event) {
             event.preventDefault();
             const input5 = document.querySelectorAll('input')[4];
@@ -123,19 +143,34 @@ import { ShoppingBag } from './modules/display.js';
             const amount = parseInt(input5.value);
             const price = parseInt(price5.innerText);
 
-            bagOne.addProduct(amount, price);
+            const productName = document.querySelectorAll('h1')[4].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
         }
 
-    },1000);
+    },2000);
 
     const shopping = document.querySelector('.shoppingbag')
-    shopping.addEventListener('click', function(){
+    shopping.addEventListener('click', ()=>{
         console.log(bagOne.totalCost());
-        for(let i=0; i<bagOne.totalAmount; i++){
-            const products = document.createElement('p');
-            shopping.appendChild(products)
-            products.innerText=`Produkt ${[i]}`;
-        }
+            for(let i=0; i<bagOne.produktList.length; i++){
+                const products = document.createElement('p');
+                shopping.appendChild(products);
+                console.log(bagOne.produktList)
+                products.innerText= bagOne.produktList[i].name;
+
+                const remove = document.createElement('button');
+                products.appendChild(remove);
+                remove.innerText = '-'
+
+                remove.addEventListener('click', ()=>{
+                bagOne.deleteProduct(bagOne.produktList[i], i);
+            })
+        } 
+
         const summa = document.createElement('p');
         shopping.appendChild(summa)
         summa.innerText=`Summa: ${bagOne.totalCost()}`;

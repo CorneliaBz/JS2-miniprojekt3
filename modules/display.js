@@ -1,37 +1,46 @@
 class ShoppingBag{
-    constructor(totalAmount, totalPrice){
-        this.totalAmount = totalAmount
+    constructor(totalPrice){
         this.totalPrice = totalPrice
+        this.produktList = []
     }
-    addProduct(amount, price){
-        console.log(this.totalAmount)
-        console.log(`add ${amount} to ${this.totalAmount}`)
-        console.log(`${amount+this.totalAmount}`)
-        this.totalAmount=amount+this.totalAmount
-        console.log(this.totalAmount*price)
-        this.totalPrice=price*this.totalAmount
+
+    addProduct(product){
+        let addPrice=product.price;
+        this.produktList.push(product);
+        console.log(this.produktList)
+        
+        this.totalPrice=addPrice+this.totalPrice
+
+        
     }
-    deleteProduct(amount, price){
-        console.log(this.totalAmount)
-        console.log(`delete ${amount} from ${this.totalAmount}`)
-        console.log(`${this.totalAmount-amount}`)
-        this.totalAmount=this.totalAmount-amount
-        let thePrice=price*amount
+
+    deleteProduct(product, index){
+        let thePrice=product.price
         console.log(this.totalPrice-thePrice)
         this.totalPrice=this.totalPrice-thePrice
         console.log(this.totalPrice)
+        this.produktList.splice(index, 1);
+        console.log(this.produktList, 'produktList')
     }
+
     totalCost(){
         console.log(`summa: ${this.totalPrice}`)
         return this.totalPrice
     }
+
     buy(){
-        this.totalAmount=0 
         this.totalPrice=0
-        console.log(this.totalAmount, this.totalPrice)
+    }
+}
+
+class Product{
+    constructor(name, price, stock){
+        this.name = name
+        this.price = price
+        this.stock = stock
     }
 }
 
 
 
-export {ShoppingBag}
+export {ShoppingBag, Product}
