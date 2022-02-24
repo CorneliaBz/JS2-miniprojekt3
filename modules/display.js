@@ -2,7 +2,6 @@ class ShoppingBag{
     constructor(totalAmount, totalPrice){
         this.totalAmount = totalAmount
         this.totalPrice = totalPrice
-
     }
     addProduct(amount, price){
         console.log(this.totalAmount)
@@ -24,6 +23,7 @@ class ShoppingBag{
     }
     totalCost(){
         console.log(`summa: ${this.totalPrice}`)
+        return this.totalPrice
     }
     buy(){
         this.totalAmount=0 
