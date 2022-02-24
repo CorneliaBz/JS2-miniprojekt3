@@ -25,31 +25,33 @@ bagOne.buy();
 
         jsonPromise.then(
             function (promiseValue) {
-                console.log(`Variabler`, promiseValue);
+
                 for (let i = 1; i < promiseValue.length; i++) {
 
-                    const section = document.querySelectorAll(`section`)[0];
-                    const form = document.createElement(`form`);
-                    const btn1 = document.createElement(`button`);
-                    const input = document.createElement(`input`);
+                    const section = document.querySelectorAll('section')[0];
+                    const form = document.createElement('form');
+                    const btn1 = document.createElement('button');
+                    const input = document.createElement('input');
 
-                    const newDiv = document.createElement(`div`);
-                    const h1 = document.createElement(`h1`);
-                    const img = document.createElement(`img`);
-                    const h2 = document.createElement(`h2`);
-                    const p2 = document.createElement(`p`);
+                    const newDiv = document.createElement('div');
+                    const h1 = document.createElement('h1');
+                    const img = document.createElement('img');
+                    const h2 = document.createElement('h2');
+                    const p2 = document.createElement('p');
+
+                    h2.classList.add("price");
 
                     h1.innerText = promiseValue[i].name;
-                    h2.innerText = promiseValue[i].price + `:-`;
-                    img.src = `img/` + promiseValue[i].image;
-                    p2.innerText = `In stock: ` + promiseValue[i].stock;
+                    h2.innerText = promiseValue[i].price + ':-';
+                    img.src = 'img/' + promiseValue[i].image;
+                    p2.innerText = 'In stock: ' + promiseValue[i].stock;
 
-                    btn1.innerText = `Add to cart`;
-                    btn1.id = `button` + i;
-                    btn1.type = `submit`;
+                    btn1.innerText = 'Add to cart';
+                    btn1.id = 'button' + i;
+                    btn1.type = 'submit';
 
-                    input.type = `number`;
-                    input.name = `amount`;
+                    input.type = 'number';
+                    input.name = 'amount';
                     input.min = 1;
                     input.max = 15;
 
@@ -66,18 +68,63 @@ bagOne.buy();
         )
     }
 
-    //Måste för tillfället ha en timer för att knapparna ska laddas in innan de kan hämntas från DOM:en funkar endast på första knappen just nu. Resterande knappar hämtar amount från samma input :'( WILL FIX LATER
-    setTimeout(function (){ 
-        document.getElementById(`button1`).addEventListener("click", getAmount);
-        document.getElementById(`button2`).addEventListener("click", getAmount);
-        document.getElementById(`button3`).addEventListener("click", getAmount);
-        document.getElementById(`button4`).addEventListener("click", getAmount);
-        document.getElementById(`button5`).addEventListener("click", getAmount);
+    //Måste för tillfället ha en timer för att knapparna ska hinna laddas in innan de kan hämntas från DOM:en - Finns säkert ett bättre/finare sätt att skriva denna funktionen på....
+    setTimeout(function getAmount(){ 
+        document.getElementById('button1').addEventListener("click", getAmount1);
+        document.getElementById('button2').addEventListener("click", getAmount2);
+        document.getElementById('button3').addEventListener("click", getAmount3);
+        document.getElementById('button4').addEventListener("click", getAmount4);
+        document.getElementById('button5').addEventListener("click", getAmount5);
 
-        function getAmount(event) {
-            const input = document.querySelector(`input`); 
+        function getAmount1(event) {
             event.preventDefault();
-            console.log(input.value);
+            const input1 = document.querySelectorAll('input')[0];
+            const price1 = document.getElementsByClassName('price')[0];
+            
+            const amount = parseInt(input1.value);
+            const price = (parseInt(price1.innerText));
+
+            bagOne.addProduct(amount, price);
+        }
+        function getAmount2(event) {
+            event.preventDefault();
+            const input2 = document.querySelectorAll('input')[1];
+            const price2 = document.getElementsByClassName('price')[1];
+            
+            const amount = parseInt(input2.value);
+            const price = parseInt(price2.innerText);
+
+            bagOne.addProduct(amount, price);
+        }
+        function getAmount3(event) {
+            event.preventDefault();
+            const input3 = document.querySelectorAll('input')[2];
+            const price3 = document.getElementsByClassName('price')[2];
+        
+            const amount = parseInt(input3.value);
+            const price = parseInt(price3.innerText);
+
+            bagOne.addProduct(amount, price);
+        }
+        function getAmount4(event) {
+            event.preventDefault();
+            const input4 = document.querySelectorAll('input')[3];
+            const price4 = document.getElementsByClassName('price')[3];
+            
+            const amount = parseInt(input4.value);
+            const price = parseInt(price4.innerText);
+
+            bagOne.addProduct(amount, price);
+        }
+        function getAmount5(event) {
+            event.preventDefault();
+            const input5 = document.querySelectorAll('input')[4];
+            const price5 = document.getElementsByClassName('price')[4];
+            
+            const amount = parseInt(input5.value);
+            const price = parseInt(price5.innerText);
+
+            bagOne.addProduct(amount, price);
         }
 
     },100);
