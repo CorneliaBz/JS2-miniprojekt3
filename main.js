@@ -69,7 +69,7 @@ import {ShoppingBag} from './modules/display.js';
         for(let i=0; i<bagOne.totalAmount; i++){
             const products = document.createElement('p');
             shopping.appendChild(products)
-            products.innerText='Bag';
+            products.innerText=`Produkt ${[i]}`;
         }
         const summa = document.createElement('p');
         shopping.appendChild(summa)
