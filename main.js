@@ -68,7 +68,7 @@ bagOne.buy();
         )
     }
 
-    //Måste för tillfället ha en timer för att knapparna ska hinna laddas in innan de kan hämntas från DOM:en - Finns säkert ett bättre/finare sätt att skriva denna funktionen på....
+    //Måste för tillfället ha en timer för att knapparna ska hinna laddas in innan de kan hämtas från DOM:en - Finns säkert ett bättre/finare sätt att skriva denna funktionen på....
     setTimeout(function getAmount(){ 
         document.getElementById('button1').addEventListener("click", getAmount1);
         document.getElementById('button2').addEventListener("click", getAmount2);
@@ -127,6 +127,6 @@ bagOne.buy();
             bagOne.addProduct(amount, price);
         }
 
-    },100);
+    },1000);
 
 })();
