@@ -82,81 +82,10 @@ import { ShoppingBag, Product, deleteItems} from './modules/display.js';
             const productName = document.querySelectorAll('h1')[0].innerText;
             const product = new Product(productName, price, 5)
             console.log(amount, product.amount, 'amount')
+            deleteItems();
             for(let i = 0; i<amount; i++){
                 bagOne.addProduct(product);
-            }
-        }
-
-        function getAmount2(event) {
-            event.preventDefault();
-            const input2 = document.querySelectorAll('input')[1];
-            const price2 = document.getElementsByClassName('price')[1];
-            
-            const amount = parseInt(input2.value);
-            const price = parseInt(price2.innerText);
-
-            const productName = document.querySelectorAll('h1')[1].innerText;
-            const product = new Product(productName, price, 5)
-            console.log(amount, product.amount, 'amount')
-            for(let i = 0; i<amount; i++){
-                bagOne.addProduct(product);
-            }
-        }
-
-        function getAmount3(event) {
-            event.preventDefault();
-            const input3 = document.querySelectorAll('input')[2];
-            const price3 = document.getElementsByClassName('price')[2];
-        
-            const amount = parseInt(input3.value);
-            const price = parseInt(price3.innerText);
-
-            const productName = document.querySelectorAll('h1')[2].innerText;
-            const product = new Product(productName, price, 5)
-            console.log(amount, product.amount, 'amount')
-            for(let i = 0; i<amount; i++){
-                bagOne.addProduct(product);
-            }
-        }
-
-        function getAmount4(event) {
-            event.preventDefault();
-            const input4 = document.querySelectorAll('input')[3];
-            const price4 = document.getElementsByClassName('price')[3];
-            
-            const amount = parseInt(input4.value);
-            const price = parseInt(price4.innerText);
-
-            const productName = document.querySelectorAll('h1')[3].innerText;
-            const product = new Product(productName, price, 5)
-            console.log(amount, product.amount, 'amount')
-            for(let i = 0; i<amount; i++){
-                bagOne.addProduct(product);
-            }
-        }
-
-        function getAmount5(event) {
-            event.preventDefault();
-            const input5 = document.querySelectorAll('input')[4];
-            const price5 = document.getElementsByClassName('price')[4];
-            
-            const amount = parseInt(input5.value);
-            const price = parseInt(price5.innerText);
-
-            const productName = document.querySelectorAll('h1')[4].innerText;
-            const product = new Product(productName, price, 5)
-            console.log(amount, product.amount, 'amount')
-            for(let i = 0; i<amount; i++){
-                bagOne.addProduct(product);
-            }
-        }
-
-    },1000);
-
-    const shopping = document.querySelector('.shoppingbag')
-    shopping.addEventListener('click', ()=>{
-        deleteItems();
-        console.log(bagOne.totalCost());
+            };
             for(let i=0; i<bagOne.produktList.length; i++){
                 const products = document.createElement('p');
                 shopping.appendChild(products);
@@ -170,8 +99,157 @@ import { ShoppingBag, Product, deleteItems} from './modules/display.js';
                 remove.addEventListener('click', ()=>{
                 bagOne.deleteProduct(bagOne.produktList[i], i);
             })
-        } 
+            
+        }};
 
+        function getAmount2(event) {
+            event.preventDefault();
+            const input2 = document.querySelectorAll('input')[1];
+            const price2 = document.getElementsByClassName('price')[1];
+            
+            const amount = parseInt(input2.value);
+            const price = parseInt(price2.innerText);
+
+            const productName = document.querySelectorAll('h1')[1].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            deleteItems();
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
+            for(let i=0; i<bagOne.produktList.length; i++){
+                const products = document.createElement('p');
+                shopping.appendChild(products);
+                console.log(bagOne.produktList)
+                products.innerText= bagOne.produktList[i].name;
+
+                const remove = document.createElement('button');
+                products.appendChild(remove);
+                remove.innerText = '-'
+
+                remove.addEventListener('click', ()=>{
+                bagOne.deleteProduct(bagOne.produktList[i], i);
+            })
+        }
+        }
+
+        function getAmount3(event) {
+            event.preventDefault();
+            const input3 = document.querySelectorAll('input')[2];
+            const price3 = document.getElementsByClassName('price')[2];
+        
+            const amount = parseInt(input3.value);
+            const price = parseInt(price3.innerText);
+
+            const productName = document.querySelectorAll('h1')[2].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            deleteItems();
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
+            for(let i=0; i<bagOne.produktList.length; i++){
+                const products = document.createElement('p');
+                shopping.appendChild(products);
+                console.log(bagOne.produktList)
+                products.innerText= bagOne.produktList[i].name;
+
+                const remove = document.createElement('button');
+                products.appendChild(remove);
+                remove.innerText = '-'
+
+                remove.addEventListener('click', ()=>{
+                bagOne.deleteProduct(bagOne.produktList[i], i);
+            })
+            
+        }
+        }
+
+        function getAmount4(event) {
+            event.preventDefault();
+            const input4 = document.querySelectorAll('input')[3];
+            const price4 = document.getElementsByClassName('price')[3];
+            
+            const amount = parseInt(input4.value);
+            const price = parseInt(price4.innerText);
+
+            const productName = document.querySelectorAll('h1')[3].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            deleteItems();
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
+            for(let i=0; i<bagOne.produktList.length; i++){
+                const products = document.createElement('p');
+                shopping.appendChild(products);
+                console.log(bagOne.produktList)
+                products.innerText= bagOne.produktList[i].name;
+
+                const remove = document.createElement('button');
+                products.appendChild(remove);
+                remove.innerText = '-'
+
+                remove.addEventListener('click', ()=>{
+                bagOne.deleteProduct(bagOne.produktList[i], i);
+            })
+            
+        }
+        }
+
+        function getAmount5(event) {
+            event.preventDefault();
+            const input5 = document.querySelectorAll('input')[4];
+            const price5 = document.getElementsByClassName('price')[4];
+            
+            const amount = parseInt(input5.value);
+            const price = parseInt(price5.innerText);
+
+            const productName = document.querySelectorAll('h1')[4].innerText;
+            const product = new Product(productName, price, 5)
+            console.log(amount, product.amount, 'amount')
+            deleteItems();
+            for(let i = 0; i<amount; i++){
+                bagOne.addProduct(product);
+            }
+            for(let i=0; i<bagOne.produktList.length; i++){
+                const products = document.createElement('p');
+                shopping.appendChild(products);
+                console.log(bagOne.produktList)
+                products.innerText= bagOne.produktList[i].name;
+
+                const remove = document.createElement('button');
+                products.appendChild(remove);
+                remove.innerText = '-'
+
+                remove.addEventListener('click', ()=>{
+                bagOne.deleteProduct(bagOne.produktList[i], i);
+                })
+            }
+        }
+
+    },1000);
+
+    const shopping = document.querySelector('.shoppingbag');
+    
+    shopping.addEventListener('click', ()=>{
+        deleteItems();
+        console.log(bagOne.totalCost());
+
+        for(let i=0; i<bagOne.produktList.length; i++){
+                const products = document.createElement('p');
+                shopping.appendChild(products);
+                console.log(bagOne.produktList)
+                products.innerText= bagOne.produktList[i].name;
+
+                const remove = document.createElement('button');
+                products.appendChild(remove);
+                remove.innerText = '-'
+
+                remove.addEventListener('click', ()=>{
+                bagOne.deleteProduct(bagOne.produktList[i], i);
+            })
+        }
         const summa = document.createElement('p');
         shopping.appendChild(summa)
         summa.innerText=`Summa: ${bagOne.totalCost()}`;
@@ -183,7 +261,6 @@ import { ShoppingBag, Product, deleteItems} from './modules/display.js';
             bagOne.buy();
             summa.innerText=`Tack för ditt köp`;
             buyNow.style.display='none';
-            
         })
     })
     
