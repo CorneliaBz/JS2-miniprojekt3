@@ -92,6 +92,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 stock1.style.color = `red`;
             } else {
                 for (let i = 0; i < amount; i++) {
+                    let sum = stock-amount;
+                    stock1.innerText = `${sum} items in stock`
                     bagOne.addProduct(product);
                 }
             }
@@ -115,6 +117,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 stock2.style.color = `red`;
             } else {
                 for (let i = 0; i < amount; i++) {
+                    let sum = stock-amount;
+                    stock2.innerText = `${sum} items in stock`
                     bagOne.addProduct(product);
                 }
             }
@@ -138,6 +142,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 stock3.style.color = `red`;
             } else {
                 for (let i = 0; i < amount; i++) {
+                    let sum = stock-amount;
+                    stock3.innerText = `${sum} items in stock`
                     bagOne.addProduct(product);
                 }
             }
@@ -161,6 +167,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 stock4.style.color = `red`;
             } else {
                 for (let i = 0; i < amount; i++) {
+                    let sum = stock-amount;
+                    stock4.innerText = `${sum} items in stock`
                     bagOne.addProduct(product);
                 }
             }
@@ -184,6 +192,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 stock5.style.color = `red`;
             } else {
                 for (let i = 0; i < amount; i++) {
+                    let sum = stock-amount;
+                    stock5.innerText = `${sum} items in stock`
                     bagOne.addProduct(product);
                 }
             }
