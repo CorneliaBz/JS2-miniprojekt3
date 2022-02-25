@@ -35,22 +35,39 @@ class ShoppingBag{
     }
 }
 
-class Product{
-    constructor(name, price, stock){
+class BagItem{
+    constructor(name, price){
         this.name = name
         this.price = price
-        this.stock = stock
+    }
+
+    removeStock(e){
+        let newStock = this.stock-e
+        console.log('stock', newStock)
+        this.stock=newStock
+    }
+
+    addStock(){
+        console.log('stockadd', this.stock);
+        let newStock =+ (this.stock) + 1
+        this.stock=newStock
+        console.log('stockadd', this.stock);
+        return newStock;
+    }
+}
+
+class StoreItem {
+    constructor(name, price, stock, imageLink){
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.imageLink = imageLink;
     }
 }
 
 function deleteItems(){
-    const allShopP = document.querySelectorAll('.shoppingbag p');
-    const allShopbutton = document.querySelectorAll('.shoppingbag button');
-    for(let i = 0; i<allShopP.length; i++){
-        allShopP[i].remove();
-        allShopbutton[i].remove();
-    }
+    
 }
 
 
-export {ShoppingBag, Product, deleteItems}
+export {ShoppingBag, BagItem, StoreItem, deleteItems}
