@@ -29,7 +29,9 @@ class ShoppingBag{
     }
 
     buy(){
-        this.totalPrice=0
+        this.totalPrice=0;
+        this.produktList.splice(0, this.produktList.length);
+        
     }
 }
 
@@ -41,6 +43,14 @@ class Product{
     }
 }
 
+function deleteItems(){
+    const allShopP = document.querySelectorAll('.shoppingbag p');
+    const allShopbutton = document.querySelectorAll('.shoppingbag button');
+    for(let i = 0; i<allShopP.length; i++){
+        allShopP[i].remove();
+        allShopbutton[i].remove();
+    }
+}
 
 
-export {ShoppingBag, Product}
+export {ShoppingBag, Product, deleteItems}

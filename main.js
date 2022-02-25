@@ -1,4 +1,4 @@
-import { ShoppingBag, Product} from './modules/display.js';
+import { ShoppingBag, Product, deleteItems} from './modules/display.js';
 
 (function () {
     const bagOne = new ShoppingBag(0);
@@ -155,6 +155,7 @@ import { ShoppingBag, Product} from './modules/display.js';
 
     const shopping = document.querySelector('.shoppingbag')
     shopping.addEventListener('click', ()=>{
+        deleteItems();
         console.log(bagOne.totalCost());
             for(let i=0; i<bagOne.produktList.length; i++){
                 const products = document.createElement('p');
@@ -182,6 +183,7 @@ import { ShoppingBag, Product} from './modules/display.js';
             bagOne.buy();
             summa.innerText=`Tack för ditt köp`;
             buyNow.style.display='none';
+            
         })
     })
     
