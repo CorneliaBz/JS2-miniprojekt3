@@ -99,6 +99,10 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             }
             for(let i=0; i<bagOne.produktList.length; i++){
                 const products = document.createElement('p');
+                const shopping = document.querySelector('.shoppingbag')
+
+                products.classList.add(`product1.${i}`);
+
                 shopping.appendChild(products);
                 console.log(bagOne.produktList)
                 products.innerText= bagOne.produktList[i].name;
@@ -106,11 +110,34 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 const remove = document.createElement('button');
                 products.appendChild(remove);
                 remove.innerText = '-'
+                remove.classList.add(`button1.${i}`);
 
-                remove.addEventListener('click', ()=>{
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
+
+                // remove.addEventListener('click', sendToHell);
+
+                // document.getElementsByClassName(`fantasticClass`).addEventListener(`click`, sendToHell); 
+                const btn = document.querySelectorAll(`button`);
+                const btn2 = document.querySelectorAll("button")[5];
+                btn2.addEventListener("click", myFunction);
+
+                function myFunction() {
+                    console.log(`hello`);
+                }
+
+                // for(let i= 5; i<btn.length; i++){
+                //     btn.addEventListener(`click`, )
+                //     event = console.log(btn);
+                // }
             
+                function sendToHell(){
+                console.log(`hello`)
+                // let stock2 = document.getElementsByClassName('stock')[0];
+                // let stock3 = parseInt(stock2.innerText);
+                // stock2.innerText = `${stock3+1} items in stock`;
+                // // bagOne.deleteProduct(bagOne.produktList[i], i);
+                // console.log(`remove`, remove)
+            }
+
         }};
 
         function getAmount2(event) {
@@ -139,6 +166,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             }
             for(let i=0; i<bagOne.produktList.length; i++){
                 const products = document.createElement('p');
+                const shopping = document.querySelector('.shoppingbag')
                 shopping.appendChild(products);
                 console.log(bagOne.produktList)
                 products.innerText= bagOne.produktList[i].name;
@@ -274,39 +302,49 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 })
             }
         }
+        const shopping = document.querySelector('.shoppingbag')
+        const summadiv = document.createElement(`div`);
+        const summa = document.createElement('p');
+        shopping.appendChild(summadiv);
+        summadiv.appendChild(summa);
+        summa.innerText = `Summa: ${bagOne.totalCost()}`;
+        const buyNow = document.createElement('button');
+        summadiv.appendChild(buyNow);
+        buyNow.innerText = `Buy`;
+
 
     }, 1000);
 
-    const shopping = document.querySelector('.shoppingbag')
-    shopping.addEventListener('click', () => {
-        deleteItems();
-        console.log(bagOne.totalCost());
-        for (let i = 0; i < bagOne.produktList.length; i++) {
-            const products = document.createElement('p');
-            shopping.appendChild(products);
-            console.log(bagOne.produktList)
-            products.innerText = bagOne.produktList[i].name;
+    // const shopping = document.querySelector('.shoppingbag')
+    // shopping.addEventListener('click', () => {
+    //     // deleteItems();
+    //     console.log(bagOne.totalCost());
+    //     // for (let i = 0; i < bagOne.produktList.length; i++) {
+    //     //     const products = document.createElement('p');
+    //     //     shopping.appendChild(products);
+    //     //     console.log(bagOne.produktList)
+    //     //     products.innerText = bagOne.produktList[i].name;
 
-            const remove = document.createElement('button');
-            products.appendChild(remove);
-            remove.innerText = '-'
+    //     //     const remove = document.createElement('button');
+    //     //     products.appendChild(remove);
+    //     //     remove.innerText = '-'
 
-            remove.addEventListener('click', () => {
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
-        }
-        const summa = document.createElement('p');
-        shopping.appendChild(summa)
-        summa.innerText = `Summa: ${bagOne.totalCost()}`;
-        const buyNow = document.createElement('button');
-        shopping.appendChild(buyNow);
-        buyNow.innerText = `Buy`;
+    //     //     remove.addEventListener('click', () => {
+    //     //         bagOne.deleteProduct(bagOne.produktList[i], i);
+    //     //     })
+    //     // }
+    //     // const summa = document.createElement('p');
+    //     // shopping.appendChild(summa)
+    //     // summa.innerText = `Summa: ${bagOne.totalCost()}`;
+    //     const buyNow = document.createElement('button');
+    //     shopping.appendChild(buyNow);
+    //     buyNow.innerText = `Buy`;
 
-        buyNow.addEventListener('click', () => {
-            bagOne.buy();
-            summa.innerText=`Tack för ditt köp`;
-            buyNow.style.display='none';
-        })
-    })
+    //     buyNow.addEventListener('click', () => {
+    //         bagOne.buy();
+    //         summa.innerText=`Tack för ditt köp`;
+    //         buyNow.style.display='none';
+    //     })
+    // })
 
 })();
