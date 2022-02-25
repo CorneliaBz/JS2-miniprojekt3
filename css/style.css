@@ -3,9 +3,21 @@ body{
     text-align: center;
 }
 
-section{
-    margin: 2rem 15rem;
+article{
+    display:flex;
+}
 
+.shoppingbag{
+    border-left: 2px solid rgb(228, 228, 228);
+    border-radius: 15px;
+    min-width: 25rem;
+    margin: 2rem 0rem;
+}
+
+section{
+    margin: 2rem;
+    margin-left: 10rem;
+    margin-right: 2rem;
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(228, 228, 228);
