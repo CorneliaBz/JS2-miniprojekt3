@@ -7,10 +7,10 @@ class ShoppingBag{
     addProduct(product){
         let addPrice=product.price;
         this.produktList.push(product);
-        console.log(this.produktList)
+        console.log('productList', this.produktList)
         
         this.totalPrice=addPrice+this.totalPrice
-
+        console.log('totalPrice', this.totalPrice)
         
     }
 
@@ -24,7 +24,7 @@ class ShoppingBag{
     }
 
     totalCost(){
-        console.log(`summa: ${this.totalPrice}`)
+        console.log(`${this.totalPrice}`)
         return this.totalPrice
     }
 
@@ -41,15 +41,27 @@ class Product{
         this.price = price
         this.stock = stock
     }
+
+    removeProduct(price){
+        this.stock = this.stock+1
+    }
+
+    addItem(i){
+        this.stock =this.stock-i
+    }
 }
 
 function deleteItems(){
-    const allShopP = document.querySelectorAll('.shoppingbag p');
+    const allShopH3 = document.querySelectorAll('.shoppingbag h3');
     const allShopbutton = document.querySelectorAll('.shoppingbag button');
-    for(let i = 0; i<allShopP.length; i++){
-        allShopP[i].remove();
-        allShopbutton[i].remove();
-    }
+    
+    allShopH3.forEach(h3=>{
+        h3.remove();
+    });
+    allShopbutton.forEach(button=>{
+        button.remove();
+    })
+    
 }
 
 
