@@ -4,7 +4,32 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
     const bagOne = new ShoppingBag(0);
 
     getProducts();
+    let sum;
+    
+    function addProductToShoppingBag(stock){
+    for(let i=0; i<bagOne.produktList.length; i++){
+        const products = document.createElement('p');
+        shopping.appendChild(products);
+        products.innerText= bagOne.produktList[i].name;
 
+        const remove = document.createElement('button');
+        remove.className = `${i}`
+        products.appendChild(remove);
+        remove.innerText = '-'
+
+        remove.addEventListener('click', function(){
+            bagOne.deleteProduct(bagOne.produktList[i], i);
+            
+            if(this.className.includes (`${i}`)){
+                console.log('innertext', stock)
+                console.log('innertext', stock.innerText)
+                stock.innerText = `${sum+1} items in stock`
+            }
+        
+    })
+}
+    
+}
     //Funktion för att hämta produkterna från databasen och skriv ut dom i DOM:en
     function getProducts() {
         const url = `https://online-shop-2ccc8-default-rtdb.europe-west1.firebasedatabase.app/products.json`;
@@ -84,34 +109,22 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             const stock = parseInt(stock1.innerText);
 
             const productName = document.querySelectorAll('h1')[0].innerText;
-            const product = new Product(productName, price, stock)
-            console.log(amount, product.amount, 'amount')
+            const product1 = new Product(productName, price, stock)
+            console.log(amount, product1.amount, 'amount')
             deleteItems();
             if (amount > stock) {
                 stock1.innerText = `Stop hoarding, we dont have ${amount} items in stock`;
                 stock1.style.color = `red`;
             } else {
                 for (let i = 0; i < amount; i++) {
-                    let sum = stock-amount;
+                    sum = stock-amount;
                     stock1.innerText = `${sum} items in stock`
-                    bagOne.addProduct(product);
+                    bagOne.addProduct(product1);
                 }
             }
-            for(let i=0; i<bagOne.produktList.length; i++){
-                const products = document.createElement('p');
-                shopping.appendChild(products);
-                console.log(bagOne.produktList)
-                products.innerText= bagOne.produktList[i].name;
 
-                const remove = document.createElement('button');
-                products.appendChild(remove);
-                remove.innerText = '-'
-
-                remove.addEventListener('click', ()=>{
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
-            
-        }};
+            addProductToShoppingBag(stock1);
+};
 
         function getAmount2(event) {
             event.preventDefault();
@@ -124,8 +137,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             const stock = parseInt(stock2.innerText);
 
             const productName = document.querySelectorAll('h1')[1].innerText;
-            const product = new Product(productName, price, stock)
-            console.log(amount, product.amount, 'amount')
+            const product2 = new Product(productName, price, stock)
+            console.log(amount, product2.amount, 'amount')
                 deleteItems();            
             if (amount > stock) {
                 stock2.innerText = `Stop hoarding, we dont have ${amount} items in stock`;
@@ -134,23 +147,10 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 for (let i = 0; i < amount; i++) {
                     let sum = stock-amount;
                     stock2.innerText = `${sum} items in stock`
-                    bagOne.addProduct(product);
+                    bagOne.addProduct(product2);
                 }
             }
-            for(let i=0; i<bagOne.produktList.length; i++){
-                const products = document.createElement('p');
-                shopping.appendChild(products);
-                console.log(bagOne.produktList)
-                products.innerText= bagOne.produktList[i].name;
-
-                const remove = document.createElement('button');
-                products.appendChild(remove);
-                remove.innerText = '-'
-
-                remove.addEventListener('click', ()=>{
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
-        }
+            addProductToShoppingBag(stock2);
         }
 
         function getAmount3(event) {
@@ -164,8 +164,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             const stock = parseInt(stock3.innerText);
 
             const productName = document.querySelectorAll('h1')[2].innerText;
-            const product = new Product(productName, price, stock)
-            console.log(amount, product.amount, 'amount')
+            const product3 = new Product(productName, price, stock)
+            console.log(amount, product3.amount, 'amount')
             deleteItems();            
             if (amount > stock) {
                 stock3.innerText = `Stop hoarding, we dont have ${amount} items in stock`;
@@ -174,24 +174,10 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 for (let i = 0; i < amount; i++) {
                     let sum = stock-amount;
                     stock3.innerText = `${sum} items in stock`
-                    bagOne.addProduct(product);
+                    bagOne.addProduct(product3);
                 }
             }
-            for(let i=0; i<bagOne.produktList.length; i++){
-                const products = document.createElement('p');
-                shopping.appendChild(products);
-                console.log(bagOne.produktList)
-                products.innerText= bagOne.produktList[i].name;
-
-                const remove = document.createElement('button');
-                products.appendChild(remove);
-                remove.innerText = '-'
-
-                remove.addEventListener('click', ()=>{
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
-            
-        }
+            addProductToShoppingBag(stock3);
         }
 
         function getAmount4(event) {
@@ -205,8 +191,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             const stock = parseInt(stock4.innerText);
 
             const productName = document.querySelectorAll('h1')[3].innerText;
-            const product = new Product(productName, price, stock)
-            console.log(amount, product.amount, 'amount')
+            const product4 = new Product(productName, price, stock)
+            console.log(amount, product4.amount, 'amount')
             deleteItems();            
             if (amount > stock) {
                 stock4.innerText = `Stop hoarding, we dont have ${amount} items in stock`;
@@ -215,24 +201,10 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 for (let i = 0; i < amount; i++) {
                     let sum = stock-amount;
                     stock4.innerText = `${sum} items in stock`
-                    bagOne.addProduct(product);
+                    bagOne.addProduct(product4);
                 }
             }
-            for(let i=0; i<bagOne.produktList.length; i++){
-                const products = document.createElement('p');
-                shopping.appendChild(products);
-                console.log(bagOne.produktList)
-                products.innerText= bagOne.produktList[i].name;
-
-                const remove = document.createElement('button');
-                products.appendChild(remove);
-                remove.innerText = '-'
-
-                remove.addEventListener('click', ()=>{
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
-            
-        }
+            addProductToShoppingBag(stock4);
         }
 
         function getAmount5(event) {
@@ -246,8 +218,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             const stock = parseInt(stock5.innerText);
 
             const productName = document.querySelectorAll('h1')[4].innerText;
-            const product = new Product(productName, price, stock)
-            console.log(amount, product.amount, 'amount')
+            const product5 = new Product(productName, price, stock)
+            console.log(amount, product5.amount, 'amount')
             deleteItems();            
             if (amount > stock) {
                 stock5.innerText = `Stop hoarding, we dont have ${amount} items in stock`;
@@ -256,23 +228,10 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 for (let i = 0; i < amount; i++) {
                     let sum = stock-amount;
                     stock5.innerText = `${sum} items in stock`
-                    bagOne.addProduct(product);
+                    bagOne.addProduct(product5);
                 }
             }
-            for(let i=0; i<bagOne.produktList.length; i++){
-                const products = document.createElement('p');
-                shopping.appendChild(products);
-                console.log(bagOne.produktList)
-                products.innerText= bagOne.produktList[i].name;
-
-                const remove = document.createElement('button');
-                products.appendChild(remove);
-                remove.innerText = '-'
-
-                remove.addEventListener('click', ()=>{
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-                })
-            }
+            addProductToShoppingBag(stock5);
         }
 
     }, 1000);
@@ -280,21 +239,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
     const shopping = document.querySelector('.shoppingbag')
     shopping.addEventListener('click', () => {
         deleteItems();
-        console.log(bagOne.totalCost());
-        for (let i = 0; i < bagOne.produktList.length; i++) {
-            const products = document.createElement('p');
-            shopping.appendChild(products);
-            console.log(bagOne.produktList)
-            products.innerText = bagOne.produktList[i].name;
-
-            const remove = document.createElement('button');
-            products.appendChild(remove);
-            remove.innerText = '-'
-
-            remove.addEventListener('click', () => {
-                bagOne.deleteProduct(bagOne.produktList[i], i);
-            })
-        }
+        addProductToShoppingBag();
+        
         const summa = document.createElement('p');
         shopping.appendChild(summa)
         summa.innerText = `Summa: ${bagOne.totalCost()}`;

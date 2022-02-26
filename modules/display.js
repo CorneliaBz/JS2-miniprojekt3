@@ -53,4 +53,6 @@ function deleteItems(){
 }
 
 
+
+
 export {ShoppingBag, Product, deleteItems}
