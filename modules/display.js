@@ -14,9 +14,9 @@ class ShoppingBag{
         
     }
 
-    deleteProduct(product, index){
+    deleteProduct(product){
         let thePrice=product.price
-        console.log(this.totalPrice-thePrice)
+        console.log('total pris', this.totalPrice-thePrice)
         this.totalPrice=this.totalPrice-thePrice
         console.log(this.totalPrice)
         this.produktList.splice(index, 1);

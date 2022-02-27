@@ -71,10 +71,9 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             }
         )
     }
-//ToDo visa stock i div
-//ToDo räkna bort från stock
-//ToDo lägg till stock vid tryck på remove
+
 //ToDo Få knappen remove att ta bort item
+//ToDo lägg till stock vid tryck på remove
 //ToDo Koppla in alla produkterna
 
 
@@ -111,8 +110,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         
     }
 
-    function eraseItemFromCart(i){
-        bagOne.deleteProduct(bagOne.produktList[i], i);
+    function eraseItemFromCart(product){
+        bagOne.deleteProduct(product);
     }
 
     function eraseFromStock(value){
@@ -135,12 +134,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
 
     
 
-    function addListener2(){
-        addEventListener('click', (event)=>{
-            event.preventDefault();
-            eraseItemFromCart(product2)
-        })
-    }
+    
     
 
     function createItemInCart(product){
@@ -152,6 +146,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         cartH3.innerText = product.name 
         showStockInformation()
         }
+        
     }
 
     function createRegretButton(){
@@ -161,8 +156,16 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         cartH3.appendChild(regretButton)
         regretButton.className = `regretButton${i}`
         regretButton.innerText = 'Remove'
+        event2(regretButton)
     }
+    
 }
+
+function event2(regretButton){
+    regretButton.addEventListener('click', (event)=>{
+    event.preventDefault();
+    eraseItemFromCart(product2)
+})}
 
     function totalSum(){
         const shopping = document.querySelector('.shoppingbag');
