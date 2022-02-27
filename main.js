@@ -2,7 +2,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
 
 (function () {
     const bagOne = new ShoppingBag(0);
-    const product2 = new Product('Firecracker Teemo Figure', 350, 10)
+    const product2 = new Product(2, 'Firecracker Teemo Figure', 350, 10)
 
     getProducts();
 
@@ -30,6 +30,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                     const input = document.createElement('input');
                     input.className = `input${i}`;
                     const h2 = document.createElement('h2');
+                    const p2 = document.createElement('p');
+                    p2.className = `p${i}`
                     const newDiv = document.createElement('div');
                     newDiv.className = 'newDiv';
                     const h1 = document.createElement('h1');
@@ -42,7 +44,6 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
 
                     // h2.classList.add("price");
                     // p2.classList.add("stock");
-
                     h1.innerText = promiseValue[i].name;
                     h2.innerText = promiseValue[i].price + ':-';
                     img.src = 'img/' + promiseValue[i].image;
@@ -61,12 +62,12 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                     newDiv.appendChild(h1);
                     newDiv.appendChild(h2);
                     newDiv.appendChild(img);
-                    
+                    newDiv.appendChild(p2)
                     newDiv.appendChild(form);
                     form.appendChild(input);
                     form.appendChild(btn1);
                     
-                }addListener()
+                }addListener(), showStockInformation(product2)
             }
         )
     }
@@ -80,15 +81,9 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
     //Måste för tillfället ha en timer för att knapparna ska hinna laddas in innan de kan hämtas från DOM:en - Finns säkert ett bättre/finare sätt att skriva denna funktionen på....
     
     function showStockInformation(){
-        const section = document.querySelectorAll('section')[0];
-        let p;
-        const newDiv = document.querySelector('.newDiv')
-        newDiv.forEach(p=>{
-            p = document.createElement('p');
-            newDiv.appendChild(p);
-        })
-        
-        p.innerText = product2.stock + ` items in stock`;
+        const stockInformation = document.querySelector('.p2');
+        console.log('stock', product2.stock)
+        stockInformation.innerText = product2.stock + ` items in stock`;
     }
 
     
@@ -97,14 +92,14 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         const input = document.querySelector(`.input2`);
         let value = input.value
         console.log('value', value)
+        
         deleteItems();
         addItemToCart(product2, value);
         createItemInCart(product2);
         createRegretButton();
-        
+        eraseFromStock(value)
     }
         
-
 
     function addItemToCart(product, value){
         for(let i=0; i<value; i++){
@@ -113,26 +108,27 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             bagOne.addProduct(product);
         }
         
+        
     }
 
     function eraseItemFromCart(i){
         bagOne.deleteProduct(bagOne.produktList[i], i);
     }
 
-    function eraseFromStock(product){
-        addItem(product.stock)
-        console.log('product', product.stock)
+    function eraseFromStock(value){
+        console.log('value', value)
+        product2.addItem(value)
+        
+        showStockInformation()
+        console.log('product', product2.stock)
     }
-
-    console.log(product2)
     
     function addListener(){
         document.getElementById('button2').addEventListener("click", (event)=>{
         event.preventDefault();
         console.log(product2);
         checkInputValue();
-
-        totalSum();
+        totalSum(product2);
         
         });
     }

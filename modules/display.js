@@ -36,18 +36,21 @@ class ShoppingBag{
 }
 
 class Product{
-    constructor(name, price, stock){
+    constructor(id, name, price, stock){
+        this.id = id
         this.name = name
         this.price = price
         this.stock = stock
     }
 
-    removeProduct(price){
+    removeProductFromCart(price){
         this.stock = this.stock+1
+        return this.stock
     }
 
     addItem(i){
         this.stock =this.stock-i
+        return this.stock
     }
 }
 
