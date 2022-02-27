@@ -110,7 +110,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         
     }
 
-    function eraseItemFromCart(product){
+    function eraseItemFromCart(product, i){
         bagOne.deleteProduct(product);
     }
 
@@ -156,15 +156,15 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         cartH3.appendChild(regretButton)
         regretButton.className = `regretButton${i}`
         regretButton.innerText = 'Remove'
-        event2(regretButton)
+        event2(regretButton, i)
     }
     
 }
 
-function event2(regretButton){
+function event2(regretButton, i){
     regretButton.addEventListener('click', (event)=>{
     event.preventDefault();
-    eraseItemFromCart(product2)
+    eraseItemFromCart(product2, i)
 })}
 
     function totalSum(){
