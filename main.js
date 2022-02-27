@@ -110,8 +110,8 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         
     }
 
-    function eraseItemFromCart(product, i){
-        bagOne.deleteProduct(product);
+    function eraseItemFromCart(bagOne, i){
+        bagOne.deleteProduct(bagOne.produktList[i], i);
     }
 
     function eraseFromStock(value){
@@ -132,7 +132,9 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         });
     }
 
-    
+    function putBackInStock(product){
+        product.removeProductFromCart();
+    }    
 
     
     
@@ -164,7 +166,13 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
 function event2(regretButton, i){
     regretButton.addEventListener('click', (event)=>{
     event.preventDefault();
-    eraseItemFromCart(product2, i)
+    eraseItemFromCart(bagOne, i);
+    deleteItems();
+    createItemInCart(product2);
+    createRegretButton();
+    totalSum();
+    putBackInStock(product2)
+    showStockInformation()
 })}
 
     function totalSum(){

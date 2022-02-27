@@ -14,7 +14,7 @@ class ShoppingBag{
         
     }
 
-    deleteProduct(product){
+    deleteProduct(product, index){
         let thePrice=product.price
         console.log('total pris', this.totalPrice-thePrice)
         this.totalPrice=this.totalPrice-thePrice
@@ -43,8 +43,9 @@ class Product{
         this.stock = stock
     }
 
-    removeProductFromCart(price){
+    removeProductFromCart(){
         this.stock = this.stock+1
+        console.log('nytt Stock', this.stock)
         return this.stock
     }
 
