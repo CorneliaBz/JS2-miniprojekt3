@@ -228,7 +228,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
     }
 
     function addListener5(){
-        document.getElementById('button4').addEventListener("click", (event)=>{
+        document.getElementById('button5').addEventListener("click", (event)=>{
         event.preventDefault();
         console.log(product5);
         checkInputValue5();    
