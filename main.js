@@ -2,7 +2,11 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
 
 (function () {
     const bagOne = new ShoppingBag(0);
+    const product1 = new Product(1, 'K/DA POP/STARS Backpack', 650, 5)
     const product2 = new Product(2, 'Firecracker Teemo Figure', 350, 10)
+    const product3 = new Product(3, 'Sugar Rush Poro Figure', 350, 5)
+    const product4 = new Product(4, 'Battle Academia Keychain Pack', 450, 3)
+    const product5 = new Product(5, 'Little Legends Blind Box Vinyl Figures', 120, 5)
 
     getProducts();
 
@@ -67,27 +71,61 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                     form.appendChild(input);
                     form.appendChild(btn1);
                     
-                }addListener(), showStockInformation(product2)
+                }addListener1(), addListener2(), showStockInformation1(product1), showStockInformation2(product2)
             }
         )
     }
 
-//ToDo Få knappen remove att ta bort item
-//ToDo lägg till stock vid tryck på remove
+
 //ToDo Koppla in alla produkterna
 
 
-    //Måste för tillfället ha en timer för att knapparna ska hinna laddas in innan de kan hämtas från DOM:en - Finns säkert ett bättre/finare sätt att skriva denna funktionen på....
     
-    function showStockInformation(){
+    function showStockInformation1(){
+        const stockInformation = document.querySelector('.p1');
+        stockInformation.innerText = product1.stock + ` items in stock`;
+    }
+
+    function addListener1(){
+        document.getElementById('button1').addEventListener("click", (event)=>{
+        event.preventDefault();
+        console.log(product1);
+        checkInputValue1();
+        totalSum(product1);
+        });
+    }
+
+    function checkInputValue1(){
+        const input = document.querySelector(`.input1`);
+        let value = input.value
+        console.log('value', value)
+        
+        deleteItems();
+        addItemToCart(product1, value);
+        createItemInCart(product1);
+        createRegretButton(product1);
+        eraseFromStock(product1, value)
+    }
+    
+
+// ---------------------------------------------
+
+    function showStockInformation2(){
         const stockInformation = document.querySelector('.p2');
-        console.log('stock', product2.stock)
         stockInformation.innerText = product2.stock + ` items in stock`;
     }
 
-    
+    function addListener2(){
+        document.getElementById('button2').addEventListener("click", (event)=>{
+        event.preventDefault();
+        console.log(product2);
+        checkInputValue2();
+        totalSum(product2);
+        
+        });
+    }
 
-    function checkInputValue(){
+    function checkInputValue2(){
         const input = document.querySelector(`.input2`);
         let value = input.value
         console.log('value', value)
@@ -95,10 +133,13 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         deleteItems();
         addItemToCart(product2, value);
         createItemInCart(product2);
-        createRegretButton();
-        eraseFromStock(value)
+        createRegretButton(product2);
+        eraseFromStock(product2, value)
     }
-        
+
+
+     
+    // ----------------------------------
 
     function addItemToCart(product, value){
         for(let i=0; i<value; i++){
@@ -106,31 +147,22 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                 
             bagOne.addProduct(product);
         }
-        
-        
     }
 
     function eraseItemFromCart(bagOne, i){
         bagOne.deleteProduct(bagOne.produktList[i], i);
     }
 
-    function eraseFromStock(value){
+    function eraseFromStock(product, value){
         console.log('value', value)
-        product2.addItem(value)
+        product.addItem(value)
         
-        showStockInformation()
-        console.log('product', product2.stock)
+        showStockInformation1()
+        showStockInformation2()
+        
     }
     
-    function addListener(){
-        document.getElementById('button2').addEventListener("click", (event)=>{
-        event.preventDefault();
-        console.log(product2);
-        checkInputValue();
-        totalSum(product2);
-        
-        });
-    }
+    
 
     function putBackInStock(product){
         product.removeProductFromCart();
@@ -142,37 +174,40 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
     function createItemInCart(product){
         console.log('productList', bagOne.produktList)
         for(let i=0; i<bagOne.produktList.length; i++){
-        const shopping = document.querySelector('.shoppingbag');
-        const cartH3 = document.createElement('h3');
-        shopping.appendChild(cartH3);
-        cartH3.innerText = product.name 
-        showStockInformation()
+            const shopping = document.querySelector('.shoppingbag');
+            const cartH3 = document.createElement('h3');
+            
+            shopping.appendChild(cartH3);
+            cartH3.innerText = bagOne.produktList[i].name
+            showStockInformation1()
+            showStockInformation2()
         }
         
     }
 
-    function createRegretButton(){
+    function createRegretButton(product){
         for(let i=0; i<bagOne.produktList.length; i++){
         let cartH3 = document.querySelectorAll('h3')[i]
         const regretButton = document.createElement('button')
         cartH3.appendChild(regretButton)
         regretButton.className = `regretButton${i}`
         regretButton.innerText = 'Remove'
-        event2(regretButton, i)
+        event2(regretButton, i, product)
     }
     
 }
 
-function event2(regretButton, i){
+function event2(regretButton, i, product){
     regretButton.addEventListener('click', (event)=>{
     event.preventDefault();
     eraseItemFromCart(bagOne, i);
     deleteItems();
-    createItemInCart(product2);
-    createRegretButton();
+    createItemInCart(product);
+    createRegretButton(product);
     totalSum();
-    putBackInStock(product2)
-    showStockInformation()
+    putBackInStock(product)
+    showStockInformation1()
+    showStockInformation2()
 })}
 
     function totalSum(){
