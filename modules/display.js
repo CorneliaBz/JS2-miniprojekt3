@@ -43,13 +43,16 @@ class Product{
         this.stock = stock
     }
 
-    removeProductFromCart(){
-        this.stock = this.stock+1
+    removeProductFromCart(product){
+        console.log('ID', product.name)
+        console.log('stock', product.stock)
+        this.stock = product.stock+1
         console.log('nytt Stock', this.stock)
         return this.stock
     }
 
     addItem(i){
+        console.log('ID', this.id)
         this.stock =this.stock-i
         return this.stock
     }

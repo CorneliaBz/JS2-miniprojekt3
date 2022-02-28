@@ -165,11 +165,17 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
     
 
     function putBackInStock(product){
-        product.removeProductFromCart();
-    }    
+    if(product=product1){
+            console.log('ettan')
+            product1.removeProductFromCart(product1);
+        }else if(product=product2){
+            console.log('tvåan')
+            product2.removeProductFromCart(product2);
+        }
+        
+    }
+    
 
-    
-    
 
     function createItemInCart(product){
         console.log('productList', bagOne.produktList)
@@ -190,7 +196,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         let cartH3 = document.querySelectorAll('h3')[i]
         const regretButton = document.createElement('button')
         cartH3.appendChild(regretButton)
-        regretButton.className = `regretButton${i}`
+        cartH3.className = product.id;
         regretButton.innerText = 'Remove'
         event2(regretButton, i, product)
     }
@@ -205,7 +211,12 @@ function event2(regretButton, i, product){
     createItemInCart(product);
     createRegretButton(product);
     totalSum();
+    
     putBackInStock(product)
+    
+    
+    
+    
     showStockInformation1()
     showStockInformation2()
 })}
