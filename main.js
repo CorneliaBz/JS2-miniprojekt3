@@ -369,7 +369,7 @@ function event2(regretButton, i, product){
 
         buyNow.addEventListener('click', () => {
             bagOne.buy();
-            alert(`Thanks for your pursh, the order will send shortly`);
+            alert(`thanks for your purchase, the order will send shortly`);
             location.reload();
     });
     }
