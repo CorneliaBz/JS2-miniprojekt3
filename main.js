@@ -71,7 +71,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
                     form.appendChild(input);
                     form.appendChild(btn1);
                     
-                }addListener1(), addListener2(), showStockInformation1(product1), showStockInformation2(product2)
+                }addListener1(), addListener2(), addListener3(), addListener4(), addListener5(), showStockInformation1(product1), showStockInformation2(product2), showStockInformation3(product3), showStockInformation4(product4), showStockInformation5(product5)
             }
         )
     }
@@ -91,7 +91,6 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         event.preventDefault();
         console.log(product1);
         checkInputValue1();
-        totalSum(product1);
         });
     }
 
@@ -99,12 +98,20 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         const input = document.querySelector(`.input1`);
         let value = input.value
         console.log('value', value)
-        
-        deleteItems();
-        addItemToCart(product1, value);
-        createItemInCart(product1);
-        createRegretButton(product1);
-        eraseFromStock(product1, value)
+
+        if (product1.stock < value){
+            const stockInformation = document.querySelector('.p1');
+            stockInformation.innerText = `Can't add ${value} items, we have ${product1.stock} items in stock`;
+            stockInformation.style.color = 'red';
+
+        }else{
+            deleteItems();
+            addItemToCart(product1, value);
+            createItemInCart(product1);
+            createRegretButton(product1);
+            eraseFromStock(product1, value);
+            totalSum(product1);
+        }
     }
     
 
@@ -119,9 +126,7 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         document.getElementById('button2').addEventListener("click", (event)=>{
         event.preventDefault();
         console.log(product2);
-        checkInputValue2();
-        totalSum(product2);
-        
+        checkInputValue2();    
         });
     }
 
@@ -130,13 +135,125 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         let value = input.value
         console.log('value', value)
         
-        deleteItems();
-        addItemToCart(product2, value);
-        createItemInCart(product2);
-        createRegretButton(product2);
-        eraseFromStock(product2, value)
+        if (product2.stock < value){
+            const stockInformation = document.querySelector('.p2');
+            stockInformation.innerText = `Can't add ${value} items, we have ${product2.stock} items in stock`;
+            stockInformation.style.color = 'red';
+
+        }else{
+            deleteItems();
+            addItemToCart(product2, value);
+            createItemInCart(product2);
+            createRegretButton(product2);
+            eraseFromStock(product2, value); 
+            totalSum(product2);
+        }
     }
 
+// ---------------------------------------------
+
+    function showStockInformation3(){
+        const stockInformation = document.querySelector('.p3');
+        stockInformation.innerText = product3.stock + ` items in stock`;
+    }
+
+    function addListener3(){
+        document.getElementById('button3').addEventListener("click", (event)=>{
+        event.preventDefault();
+        console.log(product3);
+        checkInputValue3();    
+        });
+    }
+
+    function checkInputValue3(){
+        const input = document.querySelector(`.input3`);
+        let value = input.value
+        console.log('value', value)
+        
+        if (product3.stock < value){
+            const stockInformation = document.querySelector('.p3');
+            stockInformation.innerText = `Can't add ${value} items, we have ${product3.stock} items in stock`;
+            stockInformation.style.color = 'red';
+
+        }else{
+            deleteItems();
+            addItemToCart(product3, value);
+            createItemInCart(product3);
+            createRegretButton(product3);
+            eraseFromStock(product3, value); 
+            totalSum(product3);
+        }
+    }
+
+// ---------------------------------------------
+
+    function showStockInformation4(){
+        const stockInformation = document.querySelector('.p4');
+        stockInformation.innerText = product4.stock + ` items in stock`;
+    }
+
+    function addListener4(){
+        document.getElementById('button4').addEventListener("click", (event)=>{
+        event.preventDefault();
+        console.log(product4);
+        checkInputValue4();    
+        });
+    }
+
+    function checkInputValue4(){
+        const input = document.querySelector(`.input4`);
+        let value = input.value
+        console.log('value', value)
+        
+        if (product4.stock < value){
+            const stockInformation = document.querySelector('.p4');
+            stockInformation.innerText = `Can't add ${value} items, we have ${product4.stock} items in stock`;
+            stockInformation.style.color = 'red';
+
+        }else{
+            deleteItems();
+            addItemToCart(product4, value);
+            createItemInCart(product4);
+            createRegretButton(product4);
+            eraseFromStock(product4, value); 
+            totalSum(product4);
+        }
+    }
+
+// ---------------------------------------------
+
+    function showStockInformation5(){
+        const stockInformation = document.querySelector('.p5');
+        stockInformation.innerText = product5.stock + ` items in stock`;
+    }
+
+    function addListener5(){
+        document.getElementById('button4').addEventListener("click", (event)=>{
+        event.preventDefault();
+        console.log(product5);
+        checkInputValue5();    
+        });
+    }
+
+    function checkInputValue5(){
+        const input = document.querySelector(`.input5`);
+        let value = input.value
+        console.log('value', value)
+        
+        if (product5.stock < value){
+            const stockInformation = document.querySelector('.p5');
+            stockInformation.innerText = `Can't add ${value} items, we have ${product5.stock} items in stock`;
+            stockInformation.style.color = 'red';
+
+        }else{
+            deleteItems();
+            addItemToCart(product5, value);
+            createItemInCart(product5);
+            createRegretButton(product5);
+            eraseFromStock(product5, value); 
+            totalSum(product5);
+        }
+    }
 
      
     // ----------------------------------
@@ -159,6 +276,9 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
         
         showStockInformation1()
         showStockInformation2()
+        showStockInformation3()
+        showStockInformation4()
+        showStockInformation5()
         
     }
     
@@ -187,6 +307,9 @@ import { ShoppingBag, Product, deleteItems } from './modules/display.js';
             cartH3.innerText = bagOne.produktList[i].name
             showStockInformation1()
             showStockInformation2()
+            showStockInformation3()
+            showStockInformation4()
+            showStockInformation5()
         }
         
     }
@@ -219,17 +342,36 @@ function event2(regretButton, i, product){
     
     showStockInformation1()
     showStockInformation2()
+    showStockInformation3()
+    showStockInformation4()
+    showStockInformation5()
 })}
 
     function totalSum(){
         const shopping = document.querySelector('.shoppingbag');
         const summa = document.createElement('h3');
+        summa.classList.add("summa");
         shopping.appendChild(summa);
         let sum = bagOne.totalCost();
         
         console.log('summa', sum)
         summa.innerText = `Summa: ${sum}`;
+
+        buyNow();
         
+    }
+
+    function buyNow(){
+        const shopping = document.querySelector('.shoppingbag');
+        const buyNow = document.createElement('button');
+        shopping.appendChild(buyNow);
+        buyNow.innerText = `Buy`;
+
+        buyNow.addEventListener('click', () => {
+            bagOne.buy();
+            alert(`Thanks for your pursh, the order will send shortly`);
+            location.reload();
+    });
     }
 
     
